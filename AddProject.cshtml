@@ -1,0 +1,117 @@
+﻿@model Activity_Tracker.Models.AdminprojectList
+
+@{
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+    ViewBag.Title = "AddProject";
+    var details = ViewBag.details;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Add Projects</title>
+    <style>
+        :root {
+            --body-font: "Montserrat", sans-serif;
+            --white-color: #fff;
+        }
+
+        * {
+            font-family: var( --body-font);
+        }
+
+        body {
+            background-color: #B3CCFF;
+            height:700px;
+        }
+        .login-box {
+            position:absolute;
+            margin-top: 27%;
+            margin-left: 650px;
+            transform: translate(-60%,-50%);
+            background: #80AAFF;
+            padding: 20px;
+            width: 550px;
+            height:390px;
+            border-radius: 10px;
+            box-shadow: 0 15px 25px #B3CCFF;
+        }
+
+        h1 {
+            font-size: 30px;
+            margin: 0 0 40px;
+            text-align: center;
+            color: var(--black-color);
+        }
+
+        label {
+            margin: 10px;
+            padding: 10px;
+            display: block;
+            font-size: 20px;
+        }
+
+        input {
+            margin: 10px;
+            margin-left: 50%;
+            margin-top: -40px;
+            display: block;
+            width: 40%;
+            height: 20px;
+        }
+        select {
+            margin: 10px;
+            margin-left: 50%;
+            margin-top: -40px;
+            display: block;
+            width: 40%;
+            height: 20px;
+        }
+
+        textarea {
+            margin: 10px;
+            margin-left: 50%;
+            margin-top: -40px;
+            display: block;
+            width: 40%;
+            height: 40px;
+        }
+
+        button {
+            font-size: 20px;
+            padding: 5px;
+            margin: 20px;
+            margin-left: 45%;
+            color: aquamarine;
+            background-color: blueviolet;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-box">
+        <form method="post" action="AddProjectLists">
+            <h1><span>NEW PROJECTS</span></h1>
+            <label>Project Name</label>
+            <input type="text" name="project_name" />
+            <label>Project Lead</label>
+            <select name="project_lead">
+                <option>--- SELECT ---</option>
+                @foreach(var items in details){
+                    <option value="@items.team_lead_members">@items.team_lead_members.ToUpper()</option>
+                }
+            </select>
+            
+            <label>Project Description</label>
+            <textarea name="project_description"></textarea>
+            <label>Project Start Date</label>
+            <input type="date" name="project_start_date" />
+            <label>Project End Date</label>
+            <input type="date" name="project_end_date" />
+            <button>Add Project</button>
+        </form>
+    </div>
+</body>
+</html>
+

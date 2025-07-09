@@ -1,0 +1,154 @@
+﻿@model Activity_Tracker.Models.AdminprojectList
+
+@{
+    ViewBag.Title = "ViewMembersTasks";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+    var employee_values = ViewBag.details;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>HomePage</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <!--=============== REMIXICONS ===============-->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
+
+    <style>
+        @@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap");
+
+        :root {
+            --body-font: "Montserrat", sans-serif;
+            --white-color: #fff;
+        }
+
+        * {
+            font-family: var( --body-font);
+        }
+
+        body {
+            background-color: #B3CCFF;
+            height: 700px;
+        }
+
+        .login-box {
+            margin: 400px;
+            margin-left: 650px;
+            margin-top:27%;
+            transform: translate(-50%,-50%);
+            background: #80AAFF;
+            position: absolute;
+            padding: 50px;
+            width: 650px;
+            border-radius: 10px;
+            box-shadow: 0 15px 25px #B3CCFF;
+        }
+
+        .login-box h1 {
+            font-size: 30px;
+            margin: 0 0 40px;
+            text-align: center;
+            color: var(--black-color);
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th {
+            font-size: 20px;
+        }
+
+        td, th {
+            border: 1.5px solid var(--black-color);
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+
+        .color_1 {
+            padding: 10px;
+            background-color: red;
+            border-radius: 10px;
+        }
+
+        .color_2 {
+            padding: 10px;
+            background-color: yellow;
+            border-radius: 10px;
+        }
+
+        .color_3 {
+            padding: 10px;
+            background-color: orange;
+            border-radius: 10px;
+        }
+
+        .color_4 {
+            padding: 10px;
+            background-color: greenyellow;
+            border-radius: 10px;
+        }
+
+    </style>
+
+</head>
+<body>
+    <div class="login-box">
+        <h1>PROJECT LIST</h1>
+        <form action="" method="post">
+            <table>
+                <tr>
+                    <th>Task Name</th>
+                    <th>Task Date</th>
+                    <th>Total Timing</th>
+                    <th>Duration</th>
+                    <th>Task Status</th>
+
+                </tr>
+                @{
+                    foreach (var values in employee_values)
+                    {
+                        <tr>
+                            <td>@values.task_name</td>
+                            <td>@values.task_date.ToShortDateString()</td>
+                            <td>@values.total_timing</td>
+                            <td>@values.duration</td>
+                            @{
+                                if (Equals(values.status, "incomplete"))
+                                {
+                                    <td><div class="color_1"></div></td>
+                                }
+                                else if (Equals(values.status, "started"))
+                                {
+                                    <td><div class="color_2"></div></td>
+                                }
+                                else if (Equals(values.status, "stopped"))
+                                {
+                                    <td><div class="color_3"></div></td>
+                                }
+                                else if (Equals(values.status, "completed"))
+                                {
+                                    <td><div class="color_4"></div></td>
+                                }
+                            }
+                        </tr>
+                    }
+                }
+            </table>
+
+        </form>
+    </div>
+
+
+
+
+</body>
+</html>
+

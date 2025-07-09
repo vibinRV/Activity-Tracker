@@ -1,0 +1,112 @@
+﻿@model Activity_Tracker.Models.AdminprojectList
+
+@{
+    ViewBag.Title = "ViewProjectMembers";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+    var team_members = ViewBag.details;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>HomePage</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <!--=============== REMIXICONS ===============-->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
+
+    <style>
+        @@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap");
+
+        :root {
+            --body-font: "Montserrat", sans-serif;
+            --white-color: #fff;
+        }
+
+        * {
+            font-family: var( --body-font);
+        }
+
+        body {
+            background-color: #B3CCFF;
+        }
+
+        .login-box {
+            margin: 400px;
+            margin-left: 650px;
+            margin-top:27%;
+            transform: translate(-50%,-50%);
+            background: #80AAFF;
+            position: absolute;
+            padding: 50px;
+            width: 600px;
+            border-radius: 10px;
+            box-shadow: 0 15px 25px #B3CCFF;
+        }
+
+        .login-box h1 {
+            font-size: 30px;
+            margin: 0 0 40px;
+            text-align: center;
+            color: var(--black-color);
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th {
+            font-size: 20px;
+        }
+
+        td, th {
+            border: 1.5px solid var(--black-color);
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="login-box">
+        <h1>PROJECT LIST</h1>
+        <form action="" method="post">
+            <table>
+                <tr>
+                    <th>SNo</th>
+                    <th>Person_Name</th>
+                    <th>person_role</th>
+                    <th>All Tasks</th>
+                </tr>
+                @{
+                    int inc = 0;
+                    foreach (var list in team_members)
+                    {
+                        string val = list.person_name;
+                        inc++;
+                        <tr>
+                            <td>@inc</td>
+                            <td>@list.person_name</td>
+                            <td>@list.person_role</td>
+                            <td><a href="@Url.Action("ViewMembersTasks", "Admin", new {val})">VIEW</a></td>
+                        </tr>
+
+                    }
+                }
+            </table>
+
+        </form>
+    </div>
+
+
+
+
+</body>
+</html>
+

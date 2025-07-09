@@ -1,0 +1,96 @@
+﻿@model Activity_Tracker.Models.AdminprojectList
+
+@{
+    ViewBag.Title = "AddTeamLeadMembers";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AddPersons</title>
+    <style>
+        :root {
+            --body-font: "Montserrat", sans-serif;
+        }
+
+        * {
+            font-family: var( --body-font);
+        }
+
+        body {
+            background-color: #B3CCFF;
+        }
+
+        .login-box {
+            position: absolute;
+            margin-top: 27%;
+            margin-left: 650px;
+            transform: translate(-60%,-50%);
+            background: #80AAFF;
+            padding: 20px;
+            width: 500px;
+            border-radius: 10px;
+            box-shadow: 0 15px 25px #B3CCFF;
+        }
+
+        h1 {
+            font-size: 30px;
+            margin: 0 0 40px;
+            text-align: center;
+            color: var(--black-color);
+        }
+
+        label {
+            margin: 10px;
+            padding: 10px;
+            display: block;
+            font-size: 20px;
+        }
+
+        input {
+            margin: 10px;
+            margin-left: 50%;
+            margin-top: -40px;
+            display: block;
+            width: 40%;
+            height: 20px;
+        }
+
+        textarea {
+            margin: 10px;
+            margin-left: 50%;
+            margin-top: -40px;
+            display: block;
+            width: 40%;
+            height: 40px;
+        }
+
+        button {
+            font-size: 20px;
+            padding: 5px;
+            margin: 20px;
+            margin-left: 45%;
+            color: aquamarine;
+            background-color: blueviolet;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-box">
+        <form action="VerifyTeamLeadMembers" method="post">
+            <h1><span>ADD TEAM LEADS</span></h1>
+            <label>Team Lead Name</label>
+            <input type="text" name="team_lead_members" />
+            <label>Team Lead Role</label>
+            <input type="text" name="team_lead_role" />
+
+            <button type="submit" name="submit">ADD</button>
+        </form>
+    </div>
+</body>
+</html>
+
+
